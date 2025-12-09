@@ -1,0 +1,99 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": ["order_id", "customer_id", "order_date", "status", "items"],
+    "properties": {
+      "order_id": {
+        "bsonType": "string",
+        "pattern": "^ORD-[0-9]{8}-[A-Z0-9]{6}$",
+        "description": "Formato: ORD-YYYYMMDD-XXXXXX"
+      },
+      "customer_id": {
+        "bsonType": "string",
+        "description": "Referencia al cliente"
+      },
+      "order_date": {
+        "bsonType": "date",
+        "description": "Fecha de la orden"
+      },
+      "ship_date": {
+        "bsonType": "date",
+        "description": "Fecha de envío"
+      },
+      "status": {
+        "bsonType": "string",
+        "enum": ["pending", "processing", "shipped", "delivered", "cancelled"],
+        "description": "Estado válido de la orden"
+      },
+      "total_amount": {
+        "bsonType": "double",
+        "minimum": 0,
+        "description": "Monto total no negativo"
+      },
+      "discount": {
+        "bsonType": "double",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "Descuento entre 0-100%"
+      },
+      "shipping_cost": {
+        "bsonType": "double",
+        "minimum": 0,
+        "description": "Costo de envío no negativo"
+      },
+      "items": {
+        "bsonType": "array",
+        "minItems": 1,
+        "description": "Debe tener al menos un item",
+        "items": {
+          "bsonType": "object",
+          "required": ["product_id", "quantity", "unit_price"],
+          "properties": {
+            "product_id": {
+              "bsonType": "string",
+              "description": "ID del producto"
+            },
+            "product_name": {
+              "bsonType": "string",
+              "description": "Nombre del producto"
+            },
+            "quantity": {
+              "bsonType": "int",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Cantidad entre 1-100"
+            },
+            "unit_price": {
+              "bsonType": "double",
+              "minimum": 0,
+              "description": "Precio unitario no negativo"
+            },
+            "subtotal": {
+              "bsonType": "double",
+              "minimum": 0,
+              "description": "Subtotal calculado"
+            }
+          }
+        }
+      },
+      "shipping_address": {
+        "bsonType": "object",
+        "properties": {
+          "street": { "bsonType": "string" },
+          "city": { "bsonType": "string" },
+          "state": { "bsonType": "string" },
+          "country": { "bsonType": "string" },
+          "postal_code": { "bsonType": "string" }
+        }
+      },
+      "payment_method": {
+        "bsonType": "string",
+        "enum": ["credit_card", "debit_card", "paypal", "bank_transfer", "cash"]
+      },
+      "priority": {
+        "bsonType": "string",
+        "enum": ["low", "medium", "high", "critical"]
+      }
+    }
+  }
+}

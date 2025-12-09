@@ -1,0 +1,49 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": ["review_id", "product_id", "customer_id", "rating", "review_date"],
+    "properties": {
+      "review_id": {
+        "bsonType": "string",
+        "description": "ID único de la reseña"
+      },
+      "product_id": {
+        "bsonType": "string",
+        "description": "Referencia al producto"
+      },
+      "customer_id": {
+        "bsonType": "string",
+        "description": "Referencia al cliente"
+      },
+      "rating": {
+        "bsonType": "int",
+        "minimum": 1,
+        "maximum": 5,
+        "description": "Calificación de 1 a 5 estrellas"
+      },
+      "title": {
+        "bsonType": "string",
+        "maxLength": 200,
+        "description": "Título de la reseña"
+      },
+      "comment": {
+        "bsonType": "string",
+        "maxLength": 2000,
+        "description": "Comentario detallado"
+      },
+      "review_date": {
+        "bsonType": "date",
+        "description": "Fecha de la reseña"
+      },
+      "helpful_votes": {
+        "bsonType": "int",
+        "minimum": 0,
+        "description": "Votos útiles"
+      },
+      "verified_purchase": {
+        "bsonType": "bool",
+        "description": "Compra verificada"
+      }
+    }
+  }
+}

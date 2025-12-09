@@ -1,0 +1,74 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": ["product_id", "product_name", "category", "price"],
+    "properties": {
+      "product_id": {
+        "bsonType": "string",
+        "description": "ID único del producto (requerido)"
+      },
+      "product_name": {
+        "bsonType": "string",
+        "minLength": 3,
+        "maxLength": 200,
+        "description": "Nombre del producto (3-200 caracteres)"
+      },
+      "category": {
+        "bsonType": "string",
+        "enum": [
+          "Technology",
+          "Furniture",
+          "Office Supplies",
+          "Electronics",
+          "Home Appliances"
+        ],
+        "description": "Categoría válida del producto"
+      },
+      "sub_category": {
+        "bsonType": "string",
+        "description": "Subcategoría del producto"
+      },
+      "price": {
+        "bsonType": "double",
+        "minimum": 0,
+        "exclusiveMinimum": true,
+        "description": "Precio debe ser positivo y mayor que 0"
+      },
+      "stock_quantity": {
+        "bsonType": "int",
+        "minimum": 0,
+        "description": "Cantidad en inventario no puede ser negativa"
+      },
+      "description": {
+        "bsonType": "string",
+        "maxLength": 1000,
+        "description": "Descripción del producto"
+      },
+      "average_rating": {
+        "bsonType": "double",
+        "minimum": 0,
+        "maximum": 5,
+        "description": "Calificación promedio calculada"
+      },
+      "tags": {
+        "bsonType": "array",
+        "description": "Etiquetas para búsqueda",
+        "items": {
+          "bsonType": "string"
+        }
+      },
+      "created_at": {
+        "bsonType": "date",
+        "description": "Fecha de creación del producto"
+      },
+      "updated_at": {
+        "bsonType": "date",
+        "description": "Fecha de última actualización"
+      },
+      "is_active": {
+        "bsonType": "bool",
+        "description": "Estado activo/inactivo del producto"
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": ["customer_id", "customer_name", "email"],
+    "properties": {
+      "customer_id": {
+        "bsonType": "string",
+        "pattern": "^CUST-[A-Z0-9]{8}$",
+        "description": "Formato: CUST-XXXXXXXX"
+      },
+      "customer_name": {
+        "bsonType": "string",
+        "minLength": 2,
+        "maxLength": 100,
+        "description": "Nombre del cliente (2-100 caracteres)"
+      },
+      "email": {
+        "bsonType": "string",
+        "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+        "description": "Formato de email válido"
+      },
+      "segment": {
+        "bsonType": "string",
+        "enum": ["Consumer", "Corporate", "Home Office"]
+      },
+      "phone": {
+        "bsonType": "string",
+        "pattern": "^\\+?[0-9\\s\\-\\(\\)]{10,}$",
+        "description": "Número de teléfono válido"
+      },
+      "registration_date": {
+        "bsonType": "date",
+        "description": "Fecha de registro"
+      },
+      "address": {
+        "bsonType": "object",
+        "properties": {
+          "street": { "bsonType": "string" },
+          "city": { "bsonType": "string" },
+          "state": { "bsonType": "string" },
+          "country": { "bsonType": "string" },
+          "postal_code": { "bsonType": "string" }
+        }
+      },
+      "total_spent": {
+        "bsonType": "double",
+        "minimum": 0,
+        "description": "Total gastado por el cliente"
+      },
+      "order_count": {
+        "bsonType": "int",
+        "minimum": 0,
+        "description": "Número de órdenes realizadas"
+      },
+      "is_active": {
+        "bsonType": "bool",
+        "description": "Cliente activo/inactivo"
+      }
+    }
+  }
+}
