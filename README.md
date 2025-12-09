@@ -54,7 +54,8 @@ Se diseñó un dashboard interactivo para visualizar los KPIs del negocio:
 Gráfico de barras: Ventas totales por región.
 Gráfico circular: Distribución de inventario por categoría.
 👥 Equipo de Desarrollo
-[Nombre del Integrante 1]
-[Nombre del Integrante 2]
-[Nombre del Integrante 3]
+Bravo Yonkeiner V-30.994.057
+Mundaraion Adrian V-30.932.660
+Rinaldi Giovanni V-28.694.021
 Proyecto realizado como evaluación del Tema VIII: Sistemas de Bases de Datos Documentales.
+
